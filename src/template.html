@@ -27,17 +27,25 @@
     </div>
     <dialog class="modal">
         <form action="">
-            <label for="project-name">Project Name</label>
-            <input type="text" id="project-name" name="project-name">
+            <div class="grid-element grid-name">
+                <label for="project-name">Project Name</label>
+                <input type="text" id="project-name" name="project-name">
+            </div>
 
-            <label for="project-description">Description</label>
-            <input type="text" id="project-description" name="project-description">
+            <div class="grid-element grid-date">
+                <label for="due-date">Due Date</label>
+                <input type="date" name="due-date" id="due-date">
+            </div>
 
-            <label for="due-date">Due Date</label>
-            <input type="date" name="due-date" id="due-date">
+            <div class="grid-element grid-prio">
+                <label for="project-priority">Priority</label>
+                <input type="number" id="project-priority" name="project-priority">
+            </div>
 
-            <label for="project-priority">Priority</label>
-            <input type="number" id="project-priority" name="project-priority">
+            <div class="grid-element grid-desc">
+                <label for="project-description">Description</label>
+                <textarea name="project-description" id="project-description"></textarea>
+            </div>
 
             <button id="create-project">Create New Project</button>
         </form>

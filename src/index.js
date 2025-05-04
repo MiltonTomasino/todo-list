@@ -75,9 +75,13 @@ const ProjectManipulation = (() => {
         card.classList.add("card");
 
         let header1 = document.createElement("h1");
+        header1.classList.add("header1");
         let para = document.createElement("p");
+        para.classList.add("desc");
         let due = document.createElement("p");
+        due.classList.add("due-date")
         let prio = document.createElement("p"); 
+        prio.classList.add("priority")
         
         header1.textContent = `${project.title}`;
         para.textContent = `${project.description}`;
