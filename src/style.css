@@ -75,7 +75,7 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal > button {
+.modal > button:nth-child(2) {
     width: 100px;
     height: 50px;
 }
