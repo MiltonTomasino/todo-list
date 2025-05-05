@@ -83,6 +83,11 @@ body {
 
 }
 
+.task-box > .task-container {
+    display: flex;
+    gap: 20px;
+}
+
 .card > .desc {
     grid-column: 1 / 3;
     grid-row: 3 / 4;
@@ -125,8 +130,32 @@ body {
     padding: 5px;
 }
 
-form > #create-project {
+.grid-element.grid-task {
+    grid-column: 1 / 3;
+
+    /* outline: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.task-element > input {
+    width: 270px;
+}
+
+.grid-task {
     grid-row: 4 / 5;
+}
+
+#create-task {
+    grid-row: 5 / 6;
+}
+
+form > #create-project {
+    margin-top: 10px;
+    grid-row: 7 / 8;
     border: none;
     background-color: rgb(61, 226, 61);
     color: black;
