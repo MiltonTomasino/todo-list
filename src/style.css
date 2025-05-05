@@ -1,3 +1,13 @@
+:root {
+    --dark-blue: rgb(45, 93, 123);
+    --Periwinkel: rgb(198, 216, 255);
+    --Emerald: rgb(134, 203, 146);
+    --Persian-green: rgb(42, 157, 143);
+    --Charcoal: rgb(38, 70, 83);
+    --Saffron: rgb(233, 196, 106);
+    --Eggshell: rgb(238, 235, 211);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,12 +16,12 @@
 }
 
 body {
-    background-color: antiquewhite;
+    /* background-color: var(--Saffron); */
 }
 
 .container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 400px repeat(3, 1fr);
     grid-template-rows: 150px;
     height: 100vh;
     /* padding: 10px; */
@@ -20,16 +30,27 @@ body {
 
 .side-bar {
     /* outline: 2px solid red; */
-    background-color: rgb(63, 223, 254);
+    background-color: var(--Charcoal);
     border-right: 1px solid grey;
     grid-row: 1/ 5;
 
     display: grid;
     grid-template-columns: 40px 1fr;
+    grid-template-rows: 100px;
     grid-auto-rows: 50px;
     gap: 20px;
 
     list-style: none;
+    color: white;
+    padding: 10px;
+}
+
+.logo {
+    text-align: center;
+}
+
+.svg-logo {
+    color: white;
 }
 
 .side-bar > .sidebar-content {
@@ -37,14 +58,20 @@ body {
     align-content: center;
 }
 
+.sidebar-content h1 {
+    margin-left: 10px;
+}
+
 .header {
     /* outline: 2px solid black; */
-    background-color: white;
+    background-color: var(--Persian-green);
     grid-column: 2 / 5;
     grid-row: 1/ 2;
 
     align-content: center;
     text-align: center;
+
+    color: white;
 }
 
 .main {
@@ -59,6 +86,8 @@ body {
     padding: 20px;
     gap: 20px;
 
+    background-color: var(--Eggshell);
+
 }
 
 .main > .card {
@@ -69,11 +98,15 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 10px;
+
+    box-shadow: 3px 4px 5px -3px gray;
 }
 
 .card > .header1 {
     grid-column: 1 / 3;
     text-align: center;
+
+    color: var(--Persian-green);
 }
 
 .card > .due-date {
@@ -169,7 +202,7 @@ form > #create-project {
     margin-top: 10px;
     grid-row: 7 / 8;
     border: none;
-    background-color: rgb(61, 226, 61);
+    background-color: var(--Emerald);
     color: black;
     border-radius: 10px;
 }
