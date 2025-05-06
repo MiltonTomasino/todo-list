@@ -58,7 +58,8 @@ body {
     align-content: center;
 }
 
-.sidebar-content h1 {
+.sidebar-content h1,
+.sidebar-content h2 {
     margin-left: 10px;
 }
 

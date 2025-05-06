@@ -1,4 +1,5 @@
 import "./style.css";
+import { compareAsc, compareDesc } from "date-fns";
 
 class Project {
     constructor(title, description, dueDate, priority, tasks = []) {
@@ -52,12 +53,28 @@ const localStorageManipulation = (() => {
         return projectList;
     }
 
+    function sortProjects(method) {
+        let sortedCopy = [...projectList];
+
+        switch (method) {
+            case "due-desc":
+                console.log(projectList);
+                sortedCopy.sort((a, b) => {
+                    return compareAsc(new Date(a.dueDate), new Date(b.dueDate));
+                });
+                return sortedCopy;
+            default:
+                return sortedCopy
+        }
+    }
+
     return {
         setProjectList,
         getProjectList,
         doesProjectListExist,
         createProjectList,
         appendToList,
+        sortProjects,
     }
 
 })();
@@ -162,12 +179,16 @@ const DomManipulation = (() => {
         modal.close();
     }
 
-    function updateDOM() {
+    function updateDOM(method = null) {
         let mainList = document.querySelectorAll(".card");
         mainList.forEach((item) => item.remove());
 
         let list = localStorageManipulation.getProjectList();
         if (list.length < 1) return;
+        
+        if (method) {
+            list = localStorageManipulation.sortProjects(method);
+        }
 
         for (let i = list.length - 1; i >= 0; i--) {
             appendToMain(ProjectManipulation.createNewCard(list[i]));
@@ -192,12 +213,23 @@ const DomManipulation = (() => {
         gridTask.appendChild(task);
     }
 
+    function clearModalInput(title, description, dueDate, priority) {
+        title.value = ""
+        description.value = "";
+        dueDate.value = "";
+        priority.value = "";
+        
+        let allTasks = document.querySelectorAll(".task-element")
+        allTasks.forEach((item) => item.remove());
+    }
+
     return {
         showFormModal,
         closeFormModal,
         appendToMain,
         updateDOM,
         addTask,
+        clearModalInput,
     }
 })();
 
@@ -234,6 +266,7 @@ const ButtonManipulation = (() => {
 
         DomManipulation.updateDOM();
         DomManipulation.closeFormModal();
+        DomManipulation.clearModalInput(projectName, projectDesc, projectDueDate, projectPriority);
     })
 
     let taskBtn = document.querySelector("#create-task");
@@ -241,6 +274,14 @@ const ButtonManipulation = (() => {
         e.preventDefault();
         DomManipulation.addTask();
     });
+
+
+    let sortBtn = document.querySelector(".sort");
+    sortBtn.addEventListener("click", () => {
+        DomManipulation.updateDOM("due-desc");
+    });
+
+
 
 })();
 
