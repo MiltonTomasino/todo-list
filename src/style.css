@@ -246,6 +246,23 @@
     width: 270px;
 }
 
+.task-element > button {
+    margin-left: 10px;
+    border: none;
+    background-color: red;
+    width: 20px;
+    border-radius: 5px;
+    color: white;
+}
+
+.task-element > button:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    cursor: pointer;
+}
+
+
 .grid-task {
     grid-row: 4 / 5;
 }

@@ -214,6 +214,10 @@ const DomManipulation = (() => {
         let task = document.createElement("div");
         let taskLabel = document.createElement("label");
         let taskInput = document.createElement("input");
+        let taskDelete = document.createElement("button");
+
+        taskDelete.textContent = "x";
+        taskDelete.addEventListener("click", () => task.remove())
 
         task.classList.add("task-element");
 
@@ -224,6 +228,7 @@ const DomManipulation = (() => {
 
         task.appendChild(taskLabel);
         task.appendChild(taskInput);
+        task.appendChild(taskDelete);
 
         gridTask.appendChild(task);
     }
