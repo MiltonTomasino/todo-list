@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+<script defer src="main.js"></script></head>
+<body>
+    <div class="container">
+        <ul class="side-bar">
+            <li class="sidebar-content logo">
+                <svg class="site-logo" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                    <title>format-list-checks</title><path d="M3,5H9V11H3V5M5,7V9H7V7H5M11,7H21V9H11V7M11,15H21V17H11V15M5,20L1.5,16.5L2.91,15.09L5,17.17L9.59,12.59L11,14L5,20Z" />
+                </svg>
+                <h1>To-Do WebPage</h1>
+            </li>
+            <li class="sidebar-content create-button" id="new-project">
+                <svg class="svg-logo" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                    <title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+                </svg>
+                <h2>Create Project</h2>
+            </li>
+            <li class="sidebar-content sort-box">
+                <div class="sort">
+                    <svg class="svg-logo" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <title>sort</title><path d="M18 21L14 17H17V7H14L18 3L22 7H19V17H22M2 19V17H12V19M2 13V11H9V13M2 7V5H6V7H2Z" />
+                    </svg>
+                    <h2>Sort</h2>
+                </div>
+                <div class="sort-container inactive">
+                    <form action="">
+                        <div class="sort-element">
+                            <svg class="sort-logo" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                <title>sort-clock-ascending-outline</title><path d="M20 17H23L19 21L15 17H18V3H20V17M8 5C4.14 5 1 8.13 1 12C1 15.87 4.13 19 8 19C11.86 19 15 15.87 15 12C15 8.13 11.87 5 8 5M8 7.15C10.67 7.15 12.85 9.32 12.85 12C12.85 14.68 10.68 16.85 8 16.85C5.32 16.85 3.15 14.68 3.15 12C3.15 9.32 5.32 7.15 8 7.15M7 9V12.69L10.19 14.53L10.94 13.23L8.5 11.82V9" />
+                            </svg>
+                            <label for="due-desc">Due Date: Latest to Earliest</label>
+                            <input type="radio" name="selection" id="due-desc" value="due-desc">
+                        </div>
+
+                        <div class="sort-element">
+                            <svg class="sort-logo" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                <title>sort-clock-descending-outline</title><path d="M18 7H15L19 3L23 7H20V21H18V7M8 5C4.14 5 1 8.13 1 12C1 15.87 4.13 19 8 19C11.86 19 15 15.87 15 12C15 8.13 11.87 5 8 5M8 7.15C10.67 7.15 12.85 9.32 12.85 12C12.85 14.68 10.68 16.85 8 16.85C5.32 16.85 3.15 14.68 3.15 12C3.15 9.32 5.32 7.15 8 7.15M7 9V12.69L10.19 14.53L10.94 13.23L8.5 11.82V9" />
+                            </svg>
+                            <label for="due-asc">Due Date: Earliest to Latest</label>
+                            <input type="radio" name="selection" id="due-asc" value="due-asc">
+                        </div>
+
+                        <div class="sort-element">
+                            <svg class="sort-logo" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                <title>sort-numeric-ascending</title><path d="M19 17H22L18 21L14 17H17V3H19V17M9 13H7C5.9 13 5 13.9 5 15V16C5 17.11 5.9 18 7 18H9V19H5V21H9C10.11 21 11 20.11 11 19V15C11 13.9 10.11 13 9 13M9 16H7V15H9V16M9 3H7C5.9 3 5 3.9 5 5V9C5 10.11 5.9 11 7 11H9C10.11 11 11 10.11 11 9V5C11 3.9 10.11 3 9 3M9 9H7V5H9V9Z" />
+                            </svg>
+                            <label for="prio-desc">Priority: Lowest to Highest</label>
+                            <input type="radio" name="selection" id="prio-desc" value="prio-desc">
+                        </div>
+
+                        <div class="sort-element">
+                            <svg class="sort-logo" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                <title>sort-numeric-descending</title><path d="M19 7H22L18 3L14 7H17V21H19M9 21H5V19H9V18H7C5.9 18 5 17.11 5 16V15C5 13.9 5.9 13 7 13H9C10.11 13 11 13.9 11 15V19C11 20.11 10.11 21 9 21M9 15H7V16H9M7 3H9C10.11 3 11 3.9 11 5V9C11 10.11 10.11 11 9 11H7C5.9 11 5 10.11 5 9V5C5 3.9 5.9 3 7 3M7 9H9V5H7Z" />
+                            </svg>
+                            <label for="prio-asc">Priority: Highest to Lowest</label>
+                            <input type="radio" name="selection" id="prio-asc" value="prio-asc">
+                        </div>
+                        <button id="sort-list">Sort List</button>
+                    </form>
+                </div>
+            </li>
+        </ul>
+        <div class="header">
+            <h1>Projects</h1>
+        </div>
+        <div class="main">
+            
+        </div>
+    </div>
+    <dialog class="modal">
+        <form action="" class="form">
+            <div class="grid-element grid-name">
+                <label for="project-name">Project Name</label>
+                <input type="text" id="project-name" name="project-name">
+            </div>
+
+            <div class="grid-element grid-date">
+                <label for="due-date">Due Date</label>
+                <input type="date" name="due-date" id="due-date">
+            </div>
+
+            <div class="grid-element grid-prio">
+                <label for="project-priority">Priority</label>
+                <input type="number" id="project-priority" name="project-priority">
+            </div>
+
+            <div class="grid-element grid-desc">
+                <label for="project-description">Description</label>
+                <textarea name="project-description" id="project-description"></textarea>
+            </div>
+            <div class="grid-element grid-task">
+
+            </div>
+            <button id="create-task">Add Task</button>
+            <button id="create-project">Create New Project</button>
+        </form>
+        <button id="close-modal">X</button>
+    </dialog>
+</body>
+</html>
