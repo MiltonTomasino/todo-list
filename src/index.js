@@ -63,6 +63,12 @@ const localStorageManipulation = (() => {
                     return compareAsc(new Date(a.dueDate), new Date(b.dueDate));
                 });
                 return sortedCopy;
+            case "due-asc":
+                console.log(projectList);
+                sortedCopy.sort((a, b) => {
+                    return compareDesc(new Date(a.dueDate), new Date(b.dueDate));
+                });
+                return sortedCopy;
             default:
                 return sortedCopy
         }
@@ -165,6 +171,7 @@ const DomManipulation = (() => {
     let modal = document.querySelector(".modal");
     let mainContent = document.querySelector(".main");
     let gridTask = document.querySelector(".grid-task");
+    let sortBox = document.querySelector(".sort-box");
 
     function appendToMain(child) {
         mainContent.appendChild(child);
@@ -223,6 +230,39 @@ const DomManipulation = (() => {
         allTasks.forEach((item) => item.remove());
     }
 
+    function toggleSortBtns(value) {
+        if (value) {
+            createSortBtns();
+        } else {
+            deleteSortBtns();
+        }
+    }
+
+    function deleteSortBtns() {
+        let sortBtns = document.querySelector(".sort-container");
+        if(!sortBtns) return;
+        sortBtns.classList.remove("active");
+        sortBtns.classList.add("inactive");
+    }
+
+    function createSortBtns() {
+        let sortContainer = document.querySelector(".sort-container")
+        sortContainer.classList.remove("inactive");
+        sortContainer.classList.add("active");
+    }
+
+    function getSortSelection() {
+        let selections = document.getElementsByName("selection");
+        
+        for (let i = 0; i < selections.length; i++) {
+            if (selections[i].checked) {
+                return selections[i].value;
+            }
+        }
+
+        return null;
+    }
+
     return {
         showFormModal,
         closeFormModal,
@@ -230,11 +270,14 @@ const DomManipulation = (() => {
         updateDOM,
         addTask,
         clearModalInput,
+        toggleSortBtns,
+        getSortSelection,
     }
 })();
 
 const ButtonManipulation = (() => {
     let newProject = document.querySelector("#new-project");
+    let sortToggle = false;
 
     newProject.addEventListener("click", () => {
         DomManipulation.showFormModal();
@@ -275,13 +318,19 @@ const ButtonManipulation = (() => {
         DomManipulation.addTask();
     });
 
-
-    let sortBtn = document.querySelector(".sort");
-    sortBtn.addEventListener("click", () => {
-        DomManipulation.updateDOM("due-desc");
+    let sortList = document.querySelector(".sort");
+    sortList.addEventListener("click", () => {
+        sortToggle = !sortToggle;
+        DomManipulation.toggleSortBtns(sortToggle);
     });
 
-
+    let sortSelection = document.querySelector("#sort-list");
+    sortSelection.addEventListener("click", (e) => {
+        e.preventDefault();
+        let result = DomManipulation.getSortSelection();
+        if (!result) return;
+        DomManipulation.updateDOM(result)
+    })
 
 })();
 
