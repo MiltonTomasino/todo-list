@@ -299,7 +299,6 @@ const ButtonManipulation = (() => {
 
     createCard.addEventListener("click", (e) => {
         e.preventDefault();
-        // let newCard = ProjectManipulation.createNewCard();
 
         let projectName = document.querySelector("#project-name");
         let projectDesc = document.querySelector("#project-description");
