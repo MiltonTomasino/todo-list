@@ -58,15 +58,23 @@ const localStorageManipulation = (() => {
 
         switch (method) {
             case "due-desc":
-                console.log(projectList);
                 sortedCopy.sort((a, b) => {
                     return compareAsc(new Date(a.dueDate), new Date(b.dueDate));
                 });
                 return sortedCopy;
             case "due-asc":
-                console.log(projectList);
                 sortedCopy.sort((a, b) => {
                     return compareDesc(new Date(a.dueDate), new Date(b.dueDate));
+                });
+                return sortedCopy;
+            case "prio-desc":
+                sortedCopy.sort((a, b) => {
+                    return compareAsc(new Date(a.priority), new Date(b.priority));
+                });
+                return sortedCopy;
+            case "prio-asc":
+                sortedCopy.sort((a, b) => {
+                    return compareDesc(new Date(a.priority), new Date(b.priority));
                 });
                 return sortedCopy;
             default:
